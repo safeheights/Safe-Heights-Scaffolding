@@ -1,911 +1,1013 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safe Heights Scaffolding | Bengaluru</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #0c1f3d;
-      --navy-deep: #081530;
-      --slate: #34495f;
-      --slate-light: #6b7d94;
-      --amber: #f0a824;
-      --amber-deep: #d6900f;
-      --paper: #f6f7f9;
-      --line: #e2e6ec;
-      --ink: #1b2533;
-      --muted: #5b6878;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    img { max-width: 100%; display: block; }
-
-    a { color: inherit; }
-
-    /* ===== Header ===== */
-    .site-header {
-      background: var(--navy);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.8rem;
-      letter-spacing: -0.01em;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-    }
-
-    .logo small {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-top: 2px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #cbd4e1;
-      font-weight: 500;
-      font-size: 0.92rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover { color: var(--amber); }
-
-    .nav-cta {
-      background: var(--amber);
-      color: var(--navy-deep);
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 11px 22px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .nav-cta:hover {
-      background: #ffc04d;
-      transform: translateY(-1px);
-    }
-
-    /* ===== Hero ===== */
-    .hero {
-      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 70%);
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-inner {
-      padding: 86px 0 96px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 50px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(240,168,36,0.12);
-      border: 1px solid rgba(240,168,36,0.35);
-      color: var(--amber);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 7px 16px;
-      border-radius: 30px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 4.6vw, 3.4rem);
-      font-weight: 800;
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-      margin: 0 0 20px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--amber);
-    }
-
-    .hero p.lead {
-      color: #aebbcb;
-      font-size: 1.05rem;
-      max-width: 480px;
-      margin: 0 0 32px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.92rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn-amber {
-      background: var(--amber);
-      color: var(--navy-deep);
-    }
-
-    .btn-amber:hover { background: #ffc04d; transform: translateY(-1px); }
-
-    .btn-ghost {
-      border-color: rgba(255,255,255,0.25);
-      color: #fff;
-    }
-
-    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
-
-    /* Hero structural illustration */
-    .hero-art {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-art svg { width: 100%; height: auto; }
-
-    /* Hero stat band */
-    .stat-band {
-      background: var(--navy-deep);
-      border-top: 1px solid rgba(255,255,255,0.07);
-      position: relative;
-      z-index: 2;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 420px;
-      padding: 28px 0;
-    }
-
-    .stat-grid div {
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.08);
-      padding: 0 12px;
-    }
-
-    .stat-grid div:last-child { border-right: none; }
-
-    .stat-num {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: var(--amber);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: #aebbcb;
-      letter-spacing: 0.04em;
-      margin-top: 4px;
-    }
-
-    /* ===== Section shared ===== */
-    .section {
-      padding: 90px 0;
-    }
-
-    .section-head {
-      text-align: center;
-      max-width: 620px;
-      margin: 0 auto 56px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--amber-deep);
-      margin-bottom: 12px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.7rem, 3.4vw, 2.3rem);
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--navy);
-      margin: 0 0 14px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    /* ===== Services ===== */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .service-panel {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 38px 32px;
-      box-shadow: 0 1px 2px rgba(12,31,61,0.03), 0 18px 40px -28px rgba(12,31,61,0.25);
-      position: relative;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .service-panel:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 1px 2px rgba(12,31,61,0.04), 0 28px 50px -28px rgba(12,31,61,0.35);
-      border-color: rgba(240,168,36,0.4);
-    }
-
-    .panel-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      background: linear-gradient(145deg, var(--navy) 0%, var(--slate) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      box-shadow: 0 10px 20px -10px rgba(12,31,61,0.5);
-    }
-
-    .panel-icon svg {
-      width: 30px;
-      height: 30px;
-      fill: var(--amber);
-    }
-
-    .service-panel h3 {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin: 0 0 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .service-panel p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin: 0 0 20px;
-    }
-
-    .panel-foot {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--amber-deep);
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-      margin-top: 4px;
-    }
-
-    .panel-foot svg { width: 14px; height: 14px; fill: var(--amber-deep); }
-
-    /* ===== Process strip ===== */
-    .process-section {
-      background: var(--navy);
-      color: #fff;
-    }
-
-    .process-section .eyebrow { color: var(--amber); }
-    .process-section .section-head h2 { color: #fff; }
-    .process-section .section-head p { color: #aebbcb; }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .process-step {
-      padding: 32px 26px;
-      border-right: 1px solid rgba(255,255,255,0.1);
-      position: relative;
-    }
-
-    .process-step:last-child { border-right: none; }
-
-    .process-num {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--amber);
-      letter-spacing: 0.1em;
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .process-step h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 0 0 8px;
-    }
-
-    .process-step p {
-      font-size: 0.86rem;
-      color: #aebbcb;
-      margin: 0;
-    }
-
-    /* ===== Gallery ===== */
-    .gallery-section { background: #fff; }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .gallery-frame {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-      border: 1px solid var(--line);
-      box-shadow: 0 1px 2px rgba(12,31,61,0.03), 0 16px 32px -24px rgba(12,31,61,0.3);
-    }
-
-    .gallery-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .gallery-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(12,31,61,0.78) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-label {
-      position: absolute;
-      bottom: 16px;
-      left: 18px;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 0.3s ease;
-      z-index: 1;
-    }
-
-    .gallery-frame:hover img { transform: scale(1.07); }
-    .gallery-frame:hover::after { opacity: 1; }
-    .gallery-frame:hover .gallery-label { opacity: 1; transform: translateY(0); }
-
-    /* ===== Contact ===== */
-    .contact-section { background: var(--paper); }
-
-    .contact-shell {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 0;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 2px rgba(12,31,61,0.03), 0 24px 48px -32px rgba(12,31,61,0.3);
-    }
-
-    .contact-info {
-      background: var(--navy);
-      color: #fff;
-      padding: 48px 40px;
-      position: relative;
-    }
-
-    .contact-info::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle at top right, rgba(240,168,36,0.15), transparent 70%);
-    }
-
-    .contact-info h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin: 0 0 8px;
-    }
-
-    .contact-info > p {
-      color: #aebbcb;
-      font-size: 0.92rem;
-      margin: 0 0 32px;
-    }
-
-    .contact-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
-    }
-
-    .contact-list li {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .contact-icon-wrap {
-      width: 38px;
-      height: 38px;
-      border-radius: 9px;
-      background: rgba(240,168,36,0.14);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .contact-icon-wrap svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--amber);
-    }
-
-    .contact-list strong {
-      display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #8da0b8;
-      margin-bottom: 4px;
-      font-weight: 700;
-    }
-
-    .contact-list a, .contact-list span.value {
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.97rem;
-    }
-
-    .contact-list a:hover { color: var(--amber); }
-
-    .map-frame {
-      min-height: 100%;
-    }
-
-    .map-frame iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 380px;
-      border: 0;
-      display: block;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background: var(--navy-deep);
-      color: #8da0b8;
-      padding: 28px 0;
-    }
-
-    footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.85rem;
-    }
-
-    footer a { text-decoration: none; }
-    footer a:hover { color: var(--amber); }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .hero-inner { grid-template-columns: 1fr; padding-bottom: 60px; }
-      .hero-art { order: -1; max-width: 380px; margin: 0 auto; }
-      .stat-grid { gap: 20px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .process-step:nth-child(2) { border-right: none; }
-      .process-step:nth-child(3), .process-step:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.1); }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-shell { grid-template-columns: 1fr; }
-      .map-frame iframe { min-height: 320px; }
-    }
-
-    @media (max-width: 600px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr; }
-      .process-step { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
-      .process-step:last-child { border-bottom: none; }
-    }
-
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--amber);
-      outline-offset: 2px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Heights Scaffolding | Bengaluru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0c1f3d;
+            --navy-deep: #081530;
+            --slate: #34495f;
+            --slate-light: #6b7d94;
+            --amber: #f0a824;
+            --amber-deep: #d6900f;
+            --paper: #f6f7f9;
+            --line: #e2e6ec;
+            --ink: #1b2533;
+            --muted: #5b6878;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* ===== Top contact strip ===== */
+        .top-strip {
+            background: var(--navy-deep);
+            color: #aebbcb;
+            font-size: 0.82rem;
+        }
+
+        .top-strip-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 9px 0;
+        }
+
+        .top-strip-group {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .top-strip a {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #aebbcb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-strip a:hover {
+            color: var(--amber);
+        }
+
+        .top-strip a svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--amber);
+            flex-shrink: 0;
+        }
+
+        /* ===== New Large Brand Header Area ===== */
+        .brand-header-block {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .big-main-logo {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 480px; /* Limits the logo width so it stays crisp */
+            height: 160px;    /* Forces an optimal frame height */
+            object-fit: cover; /* Magic rule: Crops out the black bars from 1000051262_2.jpg */
+            object-position: center 51%; /* Shifts focus directly onto the central content */
+        }
+
+        /* ===== Navigation Bar ===== */
+        .site-header {
+            background: var(--navy);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cbd4e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--amber);
+        }
+
+        .nav-cta {
+            background: var(--amber);
+            color: var(--navy-deep);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 11px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: #ffc04d;
+            transform: translateY(-1px);
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 70%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            padding: 86px 0 96px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(240,168,36,0.12);
+            border: 1px solid rgba(240,168,36,0.35);
+            color: var(--amber);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 30px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 4.6vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.18;
+            letter-spacing: -0.02em;
+            margin: 0 0 20px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--amber);
+        }
+
+        .hero p.lead {
+            color: #aebbcb;
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 0 0 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-amber {
+            background: var(--amber);
+            color: var(--navy-deep);
+        }
+
+        .btn-amber:hover {
+            background: #ffc04d;
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            border-color: rgba(255,255,255,0.25);
+            color: #fff;
+        }
+
+        .btn-ghost:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.06);
+        }
+
+        /* Hero stat band */
+        .stat-band {
+            background: var(--navy-deep);
+            border-top: 1px solid rgba(255,255,255,0.07);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 420px;
+            padding: 28px 0;
+        }
+
+        .stat-grid div {
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            padding: 0 12px;
+        }
+
+        .stat-grid div:last-child {
+            border-right: none;
+        }
+
+        .stat-num {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--amber);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #aebbcb;
+            letter-spacing: 0.04em;
+            margin-top: 4px;
+        }
+
+        /* ===== Section shared ===== */
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 56px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--amber-deep);
+            margin-bottom: 12px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: var(--navy);
+            margin: 0 0 14px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* ===== Services ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-panel {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 38px 32px;
+            box-shadow: 0 1px 2px rgba(12,31,61,0.03), 0 18px 40px -28px rgba(12,31,61,0.25);
+            position: relative;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .service-panel:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 1px 2px rgba(12,31,61,0.04), 0 28px 50px -28px rgba(12,31,61,0.35);
+            border-color: rgba(240,168,36,0.4);
+        }
+
+        .panel-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, var(--navy) 0%, var(--slate) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 20px -10px rgba(12,31,61,0.5);
+        }
+
+        .panel-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--amber);
+        }
+
+        .service-panel h3 {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-panel p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin: 0 0 20px;
+        }
+
+        .panel-foot {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--amber-deep);
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            margin-top: 4px;
+        }
+
+        .panel-foot svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--amber-deep);
+        }
+
+        /* ===== Process strip ===== */
+        .process-section {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .process-section .eyebrow {
+            color: var(--amber);
+        }
+
+        .process-section .section-head h2 {
+            color: #fff;
+        }
+
+        .process-section .section-head p {
+            color: #aebbcb;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .process-step {
+            padding: 32px 26px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .process-step:last-child {
+            border-right: none;
+        }
+
+        .process-num {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--amber);
+            letter-spacing: 0.1em;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .process-step h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+
+        .process-step p {
+            font-size: 0.86rem;
+            color: #aebbcb;
+            margin: 0;
+        }
+
+        /* ===== Gallery ===== */
+        .gallery-section {
+            background: #fff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .gallery-frame {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            border: 1px solid var(--line);
+            box-shadow: 0 1px 2px rgba(12,31,61,0.03), 0 16px 32px -24px rgba(12,31,61,0.3);
+        }
+
+        .gallery-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(12,31,61,0.78) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 16px;
+            left: 18px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-frame:hover img {
+            transform: scale(1.07);
+        }
+
+        .gallery-frame:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-frame:hover .gallery-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Contact ===== */
+        .contact-section {
+            background: var(--paper);
+        }
+
+        .contact-shell {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 0;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(12,31,61,0.03), 0 24px 48px -32px rgba(12,31,61,0.3);
+        }
+
+        .contact-info {
+            background: var(--navy);
+            color: #fff;
+            padding: 48px 40px;
+            position: relative;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle at top right, rgba(240,168,36,0.15), transparent 70%);
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 0 0 8px;
+        }
+
+        .contact-info > p {
+            color: #aebbcb;
+            font-size: 0.92rem;
+            margin: 0 0 32px;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+        }
+
+        .contact-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon-wrap {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: rgba(240,168,36,0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon-wrap svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--amber);
+        }
+
+        .contact-list strong {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #8da0b8;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .contact-list a, .contact-list span.value {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.97rem;
+            line-height: 1.9;
+        }
+
+        .contact-list a:hover {
+            color: var(--amber);
+        }
+
+        .map-frame {
+            min-height: 100%;
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            border: 0;
+            display: block;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--navy-deep);
+            color: #8da0b8;
+            padding: 28px 0;
+        }
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--amber);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 980px) {
+            .top-strip-inner {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-inner {
+                padding-bottom: 60px;
+            }
+
+            .stat-grid {
+                gap: 20px;
+                margin: 0 auto;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-step:nth-child(2) {
+                border-right: none;
+            }
+
+            .process-step:nth-child(3), .process-step:nth-child(4) {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .map-frame iframe {
+                min-height: 320px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .big-main-logo {
+                height: 110px; /* Scales down smoothly on mobile */
+                max-width: 320px;
+            }
+            
+            .nav {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 18px;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .nav-cta {
+                display: none; /* Hide button on tiny screens to save space */
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .process-step:last-child {
+                border-bottom: none;
+            }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="wrap nav">
-      <a href="#top" class="logo">
-        <span class="logo-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="4" width="40" height="40" rx="8" fill="#0C1F3D"/>
-            <path d="M12 38V14L24 8L36 14V38" stroke="#F0A824" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M12 22H36" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.85"/>
-            <path d="M12 30H36" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.85"/>
-            <path d="M18 38V18M24 38V12M30 38V18" stroke="#F0A824" stroke-width="2"/>
-          </svg>
-        </span>
-        <span>
-          Safe Heights
-          <small>Scaffolding Sevices</small>
-        </span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#gallery">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="tel:07899387049" class="nav-cta">Call Now</a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" id="top">
-    <div class="wrap hero-inner">
-      <div>
-        <span class="hero-tag">Engineered for Bengaluru's Skylines</span>
-        <h1>Premium scaffolding for projects that can't <em>afford downtime</em>.</h1>
-        <p class="lead">Safe Heights delivers structural scaffolding, weatherproof coverings, and reliable rental fleets — engineered to keep your site safe, compliant, and moving on schedule.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-amber">Request a Quote</a>
-          <a href="#gallery" class="btn btn-ghost">View Projects</a>
+    <!-- Top contact strip -->
+    <div class="top-strip">
+        <div class="wrap top-strip-inner">
+            <div class="top-strip-group">
+                <a href="tel:+917899387049">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    789-938-7049
+                </a>
+                <a href="tel:+918105483535">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    810-548-3535
+                </a>
+            </div>
+            <div class="top-strip-group">
+                <a href="mailto:SafeHeights.Scaffoldings@gmail.com">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    SafeHeights.Scaffoldings@gmail.com
+                </a>
+            </div>
         </div>
-      </div>
-
-      <div class="hero-art">
-        <svg viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a scaffolding structure against a building">
-          <!-- background building -->
-          <rect x="60" y="40" width="300" height="300" rx="6" fill="#152a4d"/>
-          <g opacity="0.5" stroke="#2c4470" stroke-width="1">
-            <line x1="60" y1="90" x2="360" y2="90"/>
-            <line x1="60" y1="140" x2="360" y2="140"/>
-            <line x1="60" y1="190" x2="360" y2="190"/>
-            <line x1="60" y1="240" x2="360" y2="240"/>
-            <line x1="60" y1="290" x2="360" y2="290"/>
-          </g>
-          <!-- windows grid -->
-          <g fill="#23406e">
-            <rect x="80" y="60" width="34" height="22" rx="2"/>
-            <rect x="130" y="60" width="34" height="22" rx="2"/>
-            <rect x="180" y="60" width="34" height="22" rx="2"/>
-            <rect x="80" y="110" width="34" height="22" rx="2"/>
-            <rect x="130" y="110" width="34" height="22" rx="2"/>
-            <rect x="180" y="110" width="34" height="22" rx="2"/>
-            <rect x="80" y="160" width="34" height="22" rx="2"/>
-            <rect x="130" y="160" width="34" height="22" rx="2"/>
-            <rect x="180" y="160" width="34" height="22" rx="2"/>
-          </g>
-          <!-- scaffolding frame -->
-          <g stroke="#F0A824" stroke-width="3" stroke-linecap="round">
-            <line x1="240" y1="60" x2="240" y2="340"/>
-            <line x1="320" y1="60" x2="320" y2="340"/>
-            <line x1="240" y1="60" x2="320" y2="60"/>
-            <line x1="240" y1="120" x2="320" y2="120"/>
-            <line x1="240" y1="180" x2="320" y2="180"/>
-            <line x1="240" y1="240" x2="320" y2="240"/>
-            <line x1="240" y1="300" x2="320" y2="300"/>
-            <line x1="240" y1="340" x2="320" y2="340"/>
-            <!-- cross braces -->
-            <line x1="240" y1="60" x2="320" y2="120" opacity="0.6"/>
-            <line x1="320" y1="60" x2="240" y2="120" opacity="0.6"/>
-            <line x1="240" y1="120" x2="320" y2="180" opacity="0.6"/>
-            <line x1="320" y1="120" x2="240" y2="180" opacity="0.6"/>
-            <line x1="240" y1="180" x2="320" y2="240" opacity="0.6"/>
-            <line x1="320" y1="180" x2="240" y2="240" opacity="0.6"/>
-            <line x1="240" y1="240" x2="320" y2="300" opacity="0.6"/>
-            <line x1="320" y1="240" x2="240" y2="300" opacity="0.6"/>
-          </g>
-          <!-- platform planks -->
-          <g fill="#cbd4e1">
-            <rect x="232" y="116" width="96" height="6" rx="2"/>
-            <rect x="232" y="236" width="96" height="6" rx="2"/>
-          </g>
-          <!-- ground line -->
-          <rect x="40" y="340" width="340" height="6" rx="3" fill="#2c4470"/>
-        </svg>
-      </div>
     </div>
 
-    <div class="stat-band">
-      <div class="wrap stat-grid">
-        <div>
-          <span class="stat-num">100%</span>
-          <span class="stat-label">Safety compliance</span>
+    <!-- Big Brand Header Area -->
+    <div class="brand-header-block">
+        <div class="wrap">
+            <a href="#top">
+                <img src="1000051262_2.jpg" alt="Safe Heights Scaffolding Services" class="big-main-logo">
+            </a>
         </div>
-        <div>
-          <span class="stat-num">24/7</span>
-          <span class="stat-label">Support &amp; logistics</span>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Services -->
-  <section id="services" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">What We Offer</span>
-        <h2>Solutions engineered for every site</h2>
-        <p>From protective coverings to flexible rentals, every service is built around durability, safety, and dependable scheduling.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-panel">
-          <div class="panel-icon">
-            <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v18h18V4c0-1.1-.9-2-2-2zm-9 18H5v-2h5v2zm0-4H5v-2h5v2zm0-4H5V8h5v2zm0-4H5V4h5v2zm9 12h-5v-2h5v2zm0-4h-5v-2h5v2zm0-4h-5V8h5v2zm0-4h-5V4h5v2z"/></svg>
-          </div>
-          <h3>Scaffolding Covering</h3>
-          <p>Durable, weatherproof covering systems and protective netting designed to shield construction sites and equipment from the elements.</p>
-          <div class="panel-foot">
-            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            Weather &amp; debris protection
-          </div>
+    <!-- Navigation Bar -->
+    <header class="site-header">
+        <div class="wrap nav">
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#gallery">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+917899387049" class="nav-cta">Call Now</a>
         </div>
+    </header>
 
-        <div class="service-panel">
-          <div class="panel-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-3.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM16 11V9.5h2.5l1.12 1.5H16z"/></svg>
-          </div>
-          <h3>Scaffolding Delivery</h3>
-          <p>Reliable, on-time delivery of scaffolding materials directly to your site, scheduled around your project's timeline.</p>
-          <div class="panel-foot">
-            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            On-schedule logistics
-          </div>
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="wrap hero-inner">
+            <div>
+                <span class="hero-tag">Pine Wood Scaffolding & Saarwa — Bengaluru</span>
+                <h1>Reliable wooden scaffolding for projects that can't <em>afford downtime</em>.</h1>
+                <p class="lead">Safe Heights supplies and rents pine wood scaffolding (saarwa) for house construction, small buildings, and mid-rise projects — plus skilled labour support to keep your site work moving without delays.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-amber">Request a Quote</a>
+                    <a href="#gallery" class="btn btn-ghost">View Projects</a>
+                </div>
+            </div>
         </div>
-
-        <div class="service-panel">
-          <div class="panel-icon">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-          </div>
-          <h3>Scaffolding Rental</h3>
-          <p>Flexible rental plans tailored to project size and duration, from short-term jobs to long-running developments.</p>
-          <div class="panel-foot">
-            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            Plans for every project size
-          </div>
+        <div class="stat-band">
+            <div class="wrap stat-grid">
+                <div>
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Safety compliance</span>
+                </div>
+                <div>
+                    <span class="stat-num">24/7</span>
+                    <span class="stat-label">Support & logistics</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Process -->
-  <section id="process" class="section process-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">How It Works</span>
-        <h2>A straightforward process, start to finish</h2>
-        <p>From your first call to a fully erected structure, we keep every step transparent and on schedule.</p>
-      </div>
-
-      <div class="process-grid">
-        <div class="process-step">
-          <span class="process-num">01</span>
-          <h4>Site Assessment</h4>
-          <p>We review your project requirements and site conditions to plan the right structure.</p>
+    <!-- Services -->
+    <section id="services" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">What We Offer</span>
+                <h2>Wooden scaffolding, built for real job sites</h2>
+                <p>We deal in wooden scaffolding / saarwa (pine wood scaffolding) for both sale and rental, mainly supporting ongoing construction works. Our materials are suitable for house construction, small buildings, and mid-rise projects.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-panel">
+                    <div class="panel-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v18h18V4c0-1.1-.9-2-2-2zm-9 18H5v-2h5v2zm0-4H5v-2h5v2zm0-4H5V8h5v2zm0-4H5V4h5v2zm9 12h-5v-2h5v2zm0-4h-5v-2h5v2zm0-4h-5V8h5v2zm0-4h-5V4h5v2z"/></svg>
+                    </div>
+                    <h3>Wooden Scaffolding / Saarwa — Sale</h3>
+                    <p>Pine wood scaffolding materials suitable for house construction, small buildings, and mid-rise projects, available for purchase.</p>
+                    <div class="panel-foot">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Suited for house & mid-rise builds
+                    </div>
+                </div>
+                <div class="service-panel">
+                    <div class="panel-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+                    </div>
+                    <h3>Wooden Scaffolding / Saarwa — Rental</h3>
+                    <p>Flexible rental of pine wood scaffolding to support ongoing construction works, helping keep your site moving without delays.</p>
+                    <div class="panel-foot">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        On-time materials for active sites
+                    </div>
+                </div>
+                <div class="service-panel">
+                    <div class="panel-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <h3>Skilled Labour Arrangement</h3>
+                    <p>If required, we help arrange experienced labour for plastering, painting, plumbing, and exterior finishing — practical support for builders who need detailed work done properly.</p>
+                    <div class="panel-foot">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Plastering, painting, plumbing & finishing
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="process-step">
-          <span class="process-num">02</span>
-          <h4>Quote &amp; Schedule</h4>
-          <p>You receive a clear quote and delivery timeline tailored to your build.</p>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section process-section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">How It Works</span>
+                <h2>A straightforward process, start to finish</h2>
+                <p>From your first call to a fully erected structure, we keep every step transparent and on schedule.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="process-num">01</span>
+                    <h4>Tell Us Your Requirement</h4>
+                    <p>Share your site details and whether you need scaffolding for sale or rental.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-num">02</span>
+                    <h4>Material Dispatch</h4>
+                    <p>Pine wood scaffolding (saarwa) is arranged and sent to your site without delay.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-num">03</span>
+                    <h4>Ongoing Site Support</h4>
+                    <p>We stay available throughout your project for additional material or rental needs.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-num">04</span>
+                    <h4>Labour, If Needed</h4>
+                    <p>For plastering, painting, plumbing, or finishing work, we help arrange experienced labour.</p>
+                </div>
+            </div>
         </div>
-        <div class="process-step">
-          <span class="process-num">03</span>
-          <h4>Delivery &amp; Setup</h4>
-          <p>Materials arrive on time and our team handles safe, compliant erection.</p>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section gallery-section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Our Work</span>
+                <h2>Recent projects</h2>
+                <p>A look at scaffolding installations completed across Bengaluru.</p>
+            </div>
+            <div class="gallery-grid">
+                <a href="project1.jpg" data-lightbox="scaffolding-gallery" data-title="Project 1" class="gallery-frame">
+                    <img src="project1.jpg" alt="Project 1">
+                    <span class="gallery-label">Project 01</span>
+                </a>
+                <a href="project2.jpg" data-lightbox="scaffolding-gallery" data-title="Project 2" class="gallery-frame">
+                    <img src="project2.jpg" alt="Project 2">
+                    <span class="gallery-label">Project 02</span>
+                </a>
+                <a href="project3.jpg" data-lightbox="scaffolding-gallery" data-title="Project 3" class="gallery-frame">
+                    <img src="project3.jpg" alt="Project 3">
+                    <span class="gallery-label">Project 03</span>
+                </a>
+                <a href="project4.jpg" data-lightbox="scaffolding-gallery" data-title="Project 4" class="gallery-frame">
+                    <img src="project4.jpg" alt="Project 4">
+                    <span class="gallery-label">Project 04</span>
+                </a>
+                <a href="project5.jpg" data-lightbox="scaffolding-gallery" data-title="Project 5" class="gallery-frame">
+                    <img src="project5.jpg" alt="Project 5">
+                    <span class="gallery-label">Project 05</span>
+                </a>
+                <a href="project6.jpg" data-lightbox="scaffolding-gallery" data-title="Project 6" class="gallery-frame">
+                    <img src="project6.jpg" alt="Project 6">
+                    <span class="gallery-label">Project 06</span>
+                </a>
+            </div>
         </div>
-        <div class="process-step">
-          <span class="process-num">04</span>
-          <h4>Ongoing Support</h4>
-          <p>We stay on call for adjustments, inspections, and dismantling when you're done.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Get In Touch</span>
+                <h2>Contact Us</h2>
+                <p>Reach out for quotes, scheduling, or any questions about our scaffolding services.</p>
+            </div>
+            <div class="contact-shell">
+                <div class="contact-info">
+                    <h3>Safe Heights Scaffolding</h3>
+                    <p>Wooden scaffolding (saarwa) for sale & rental, with skilled labour support for builders across Bengaluru.</p>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </span>
+                            <div>
+                                <strong>Address</strong>
+                                <span class="value">Samruddhi Layout, Halasahalli Thippasandra, Bengaluru, Karnataka 560087</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            </span>
+                            <div>
+                                <strong>Phone</strong>
+                                <a href="tel:+917899387049">789-938-7049</a><br>
+                                <a href="tel:+918105483535">810-548-3535</a>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </span>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:SafeHeights.Scaffoldings@gmail.com">SafeHeights.Scaffoldings@gmail.com</a><br>
+                                <a href="mailto:SafeHeights.Scaffoldings@proton.me">SafeHeights.Scaffoldings@proton.me</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="map-frame ratio ratio-16x9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.842174863969!2d77.7579868!3d12.9178634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0d023e3a7b69%3A0x2394720d891b3c3a!2sSafe%20Heights%20Scaffolding!5e0!3m2!1sen!2sin!4v1781395774972!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery -->
-  <section id="gallery" class="section gallery-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Our Work</span>
-        <h2>Recent projects</h2>
-        <p>A look at scaffolding installations completed across Bengaluru.</p>
-      </div>
-
-      <div class="gallery-grid">
-        <a href="project1.jpg" data-lightbox="scaffolding-gallery" data-title="Project 1" class="gallery-frame">
-          <img src="project1.jpg" alt="Project 1">
-          <span class="gallery-label">Project 01</span>
-        </a>
-        <a href="project2.jpg" data-lightbox="scaffolding-gallery" data-title="Project 2" class="gallery-frame">
-          <img src="project2.jpg" alt="Project 2">
-          <span class="gallery-label">Project 02</span>
-        </a>
-        <a href="project3.jpg" data-lightbox="scaffolding-gallery" data-title="Project 3" class="gallery-frame">
-          <img src="project3.jpg" alt="Project 3">
-          <span class="gallery-label">Project 03</span>
-        </a>
-        <a href="project4.jpg" data-lightbox="scaffolding-gallery" data-title="Project 4" class="gallery-frame">
-          <img src="project4.jpg" alt="Project 4">
-          <span class="gallery-label">Project 04</span>
-        </a>
-        <a href="project5.jpg" data-lightbox="scaffolding-gallery" data-title="Project 5" class="gallery-frame">
-          <img src="project5.jpg" alt="Project 5">
-          <span class="gallery-label">Project 05</span>
-        </a>
-        <a href="project6.jpg" data-lightbox="scaffolding-gallery" data-title="Project 6" class="gallery-frame">
-          <img src="project6.jpg" alt="Project 6">
-          <span class="gallery-label">Project 06</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section contact-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Get In Touch</span>
-        <h2>Contact Us</h2>
-        <p>Reach out for quotes, scheduling, or any questions about our scaffolding services.</p>
-      </div>
-
-      <div class="contact-shell">
-        <div class="contact-info">
-          <h3>Safe Heights Scaffolding</h3>
-          <p>Serving construction sites across Bengaluru with safe, reliable scaffolding.</p>
-
-          <ul class="contact-list">
-            <li>
-              <span class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              </span>
-              <div>
-                <strong>Address</strong>
-                <span class="value">Samruddhi Layout, Halasahalli Thippasandra, Bengaluru, Karnataka 560087</span>
-              </div>
-            </li>
-            <li>
-              <span class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              </span>
-              <div>
-                <strong>Phone</strong>
-                <a href="tel:07899387049">07899387049</a>
-              </div>
-            </li>
-            <li>
-              <span class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </span>
-              <div>
-                <strong>Email</strong>
-                <span class="value">info@safeheightsscaffolding.com</span>
-              </div>
-            </li>
-          </ul>
+    <!-- Footer -->
+    <footer>
+        <div class="wrap">
+            <span>© 2026 Safe Heights Scaffolding. All rights reserved.</span>
+            <span><a href="tel:+917899387049">789-938-7049</a> &nbsp;|&nbsp; <a href="tel:+918105483535">810-548-3535</a> &nbsp;|&nbsp; <a href="mailto:SafeHeights.Scaffoldings@gmail.com">SafeHeights.Scaffoldings@gmail.com</a></span>
         </div>
+    </footer>
 
-        <div class="map-frame ratio ratio-16x9">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.842174863969!2d77.7579868!3d12.9178634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0d023e3a7b69%3A0x2394720d891b3c3a!2sSafe%20Heights%20Scaffolding!5e0!3m2!1sen!2sin!4v1781395774972!5m2!1sen!2sin"
-                  width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="wrap">
-      <span>&copy; 2026 Safe Heights Scaffolding. All rights reserved.</span>
-      <span><a href="tel:07899387049">07899387049</a> &nbsp;|&nbsp; <a href="mailto:info@safeheightsscaffolding.com">info@safeheightsscaffolding.com</a></span>
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 </html>
