@@ -99,18 +99,21 @@
         /* ===== Brand Header Area ===== */
         .brand-header-block {
             background: #ffffff;
-            padding: 20px 0;
+            padding: 28px 0;
             border-bottom: 1px solid var(--line);
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .big-main-logo {
             display: block;
             margin: 0 auto;
             width: 100%;
-            max-width: 450px;    /* Keeps the logo crisp and readable */
-            height: auto;        /* Let the image scale naturally without artificial cutting */
-            object-fit: contain; /* Shows the full image boundary cleanly */
+            max-width: 540px;    /* Increased size for greater visibility */
+            height: auto;
+            object-fit: contain;
         }
 
         /* ===== Navigation Bar ===== */
@@ -127,6 +130,8 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 0;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .nav-links {
@@ -135,6 +140,7 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         .nav-links a {
@@ -154,9 +160,13 @@
             color: var(--navy-deep);
             font-weight: 700;
             font-size: 0.85rem;
-            padding: 11px 22px;
+            padding: 10px 20px;
             border-radius: 6px;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
             transition: background 0.2s ease, transform 0.2s ease;
         }
 
@@ -706,26 +716,35 @@
         }
 
         @media (max-width: 600px) {
+            .brand-header-block {
+                padding: 20px 0;
+            }
+
             .big-main-logo {
-                max-width: 290px; /* Adapts size seamlessly on mobile layout screens */
+                max-width: 340px; /* Scaled up for mobile visibility */
             }
             
             .nav {
                 justify-content: center;
-                gap: 15px;
+                gap: 12px;
+                padding: 10px 0;
             }
             
             .nav-links {
                 display: flex;
-                gap: 18px;
+                gap: 14px;
+                order: 1;
             }
             
             .nav-links a {
-                font-size: 0.85rem;
+                font-size: 0.82rem;
             }
 
             .nav-cta {
-                display: none; 
+                display: inline-flex; /* Ensures Call Now remains visible on mobile */
+                order: 2;
+                font-size: 0.78rem;
+                padding: 7px 14px;
             }
 
             .gallery-grid {
@@ -790,7 +809,7 @@
     <div class="brand-header-block">
         <div class="wrap">
             <a href="#top">
-                <img src="1000051283.jpg" alt="Safe Heights Scaffolding Services" class="big-main-logo">
+                <img src="logo.png" alt="Safe Heights Scaffolding Services" class="big-main-logo">
             </a>
         </div>
     </div>
@@ -989,8 +1008,8 @@
                             </span>
                             <div>
                                 <strong>Email</strong>
-                                <a href="mailto:SafeHeights.Scaffoldings@gmail.com">SafeHeights.Scaffoldings@gmail.com</a><br>
-                                <a href="mailto:SafeHeights.Scaffoldings@proton.me">SafeHeights.Scaffoldings@proton.me</a>
+                                <a href="mailto:SafeHeights.Scaffoldings@proton.me">SafeHeights.Scaffoldings@proton.me</a><br>
+                                <a href="mailto:SafeHeights.Scaffoldings@gmail.com">SafeHeights.Scaffoldings@gmail.com</a>
                             </div>
                         </li>
                     </ul>
