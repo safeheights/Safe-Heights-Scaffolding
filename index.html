@@ -98,22 +98,36 @@
 
         /* ===== Brand Header Area ===== */
         .brand-header-block {
-            background: #ffffff;
-            padding: 28px 0;
+            background: #ffffff !important;
+            padding: 24px 0;
             border-bottom: 1px solid var(--line);
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative;
+            z-index: 1;
+            isolation: isolate;
+        }
+
+        .logo-wrapper {
+            display: inline-block;
+            background: #ffffff !important;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+            vertical-align: middle;
         }
 
         .big-main-logo {
             display: block;
             margin: 0 auto;
             width: 100%;
-            max-width: 540px;    /* Increased size for greater visibility */
+            max-width: 540px;
             height: auto;
             object-fit: contain;
+            background-color: #ffffff !important;
+            mix-blend-mode: multiply;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            transform: translateZ(0);
         }
 
         /* ===== Navigation Bar ===== */
@@ -717,11 +731,18 @@
 
         @media (max-width: 600px) {
             .brand-header-block {
-                padding: 20px 0;
+                padding: 16px 0;
+                background: #ffffff !important;
+            }
+
+            .logo-wrapper {
+                max-width: 320px;
+                background: #ffffff !important;
             }
 
             .big-main-logo {
-                max-width: 340px; /* Scaled up for mobile visibility */
+                max-width: 320px;
+                background-color: #ffffff !important;
             }
             
             .nav {
@@ -741,7 +762,7 @@
             }
 
             .nav-cta {
-                display: inline-flex; /* Ensures Call Now remains visible on mobile */
+                display: inline-flex;
                 order: 2;
                 font-size: 0.78rem;
                 padding: 7px 14px;
@@ -808,7 +829,7 @@
     <!-- Big Brand Header Area -->
     <div class="brand-header-block">
         <div class="wrap">
-            <a href="#top">
+            <a href="#top" class="logo-wrapper">
                 <img src="logo.png" alt="Safe Heights Scaffolding Services" class="big-main-logo">
             </a>
         </div>
