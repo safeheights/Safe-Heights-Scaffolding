@@ -96,21 +96,32 @@
             flex-shrink: 0;
         }
 
-        /* ===== Brand Header Area ===== */
+        /* ===== Brand Header Area (Fitted & Scaled) ===== */
         .brand-header-block {
             background: #ffffff;
-            padding: 20px 0;
+            padding: 6px 0;
             border-bottom: 1px solid var(--line);
             text-align: center;
+            overflow: hidden;
+        }
+
+        .brand-header-block a {
+            display: block;
+            margin: 0 auto;
+            max-width: 780px;
+            overflow: hidden;
         }
 
         .big-main-logo {
             display: block;
             margin: 0 auto;
             width: 100%;
-            max-width: 450px;
+            max-width: 780px;
             height: auto;
+            max-height: 320px;
             object-fit: contain;
+            transform: scale(1.18);
+            transform-origin: center center;
         }
 
         /* ===== Navigation Bar ===== */
@@ -713,8 +724,18 @@
         }
 
         @media (max-width: 600px) {
+            .brand-header-block {
+                padding: 4px 0;
+            }
+
+            .brand-header-block a {
+                max-width: 100%;
+            }
+
             .big-main-logo {
-                max-width: 290px;
+                max-width: 100%;
+                max-height: 220px;
+                transform: scale(1.15);
             }
             
             .nav {
