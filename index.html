@@ -6,7 +6,7 @@
     <title>Safe Heights Scaffolding | Bengaluru</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <style>
         :root {
@@ -32,11 +32,15 @@
 
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans Kannada', 'Noto Sans Telugu', 'Noto Sans Tamil', 'Noto Sans Devanagari', sans-serif;
             background: var(--paper);
             color: var(--ink);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+        }
+
+        body.lang-ur {
+            font-family: 'Noto Nastaliq Urdu', 'Inter', sans-serif;
         }
 
         .wrap {
@@ -144,7 +148,7 @@
 
         .nav-links {
             display: flex;
-            gap: 36px;
+            gap: 28px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -161,6 +165,28 @@
 
         .nav-links a:hover {
             color: var(--amber);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lang-select-nav {
+            background: var(--navy-deep);
+            color: #cbd4e1;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select-nav:focus {
+            border-color: var(--amber);
         }
 
         .nav-cta {
@@ -226,9 +252,9 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 4.6vw, 3.4rem);
+            font-size: clamp(2.2rem, 4.2vw, 3.2rem);
             font-weight: 800;
-            line-height: 1.18;
+            line-height: 1.25;
             letter-spacing: -0.02em;
             margin: 0 0 20px;
         }
@@ -686,6 +712,90 @@
             color: var(--amber);
         }
 
+        /* ===== Language Welcome Modal Popup ===== */
+        .lang-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 21, 48, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lang-modal-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 36px 30px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: modalPop 0.3s ease forwards;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.92); }
+            100% { transform: scale(1); }
+        }
+
+        .lang-modal-card h3 {
+            margin: 0 0 6px;
+            font-size: 1.35rem;
+            color: var(--navy-deep);
+            font-weight: 800;
+        }
+
+        .lang-modal-card p {
+            margin: 0 0 24px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .lang-btn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .lang-choice-btn {
+            background: var(--paper);
+            border: 2px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lang-choice-btn span.sub {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        .lang-choice-btn:hover {
+            border-color: var(--amber);
+            background: #fff9ed;
+            transform: translateY(-2px);
+        }
+
         /* ===== Responsive ===== */
         @media (max-width: 980px) {
             .top-strip-inner {
@@ -762,12 +872,21 @@
                 font-size: 0.82rem;
             }
 
-            .nav-cta {
-                display: inline-flex;
+            .nav-actions {
                 order: 2;
+                display: flex;
+                gap: 8px;
+            }
+
+            .lang-select-nav {
+                padding: 6px 8px;
                 font-size: 0.78rem;
-                padding: 7px 14px;
-                gap: 6px;
+            }
+
+            .nav-cta {
+                font-size: 0.78rem;
+                padding: 7px 12px;
+                gap: 5px;
             }
 
             .nav-cta svg {
@@ -791,6 +910,10 @@
             .process-step:last-child {
                 border-bottom: none;
             }
+
+            .lang-btn-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         a:focus-visible, button:focus-visible {
@@ -806,6 +929,40 @@
     </style>
 </head>
 <body>
+
+    <!-- Language Selection Popup Modal -->
+    <div class="lang-modal-overlay" id="langModal">
+        <div class="lang-modal-card">
+            <h3>Choose Your Language</h3>
+            <p>ದಯವಿಟ್ಟು ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ / ഭാഷ തിരഞ്ഞെടുക്കുക</p>
+            <div class="lang-btn-grid">
+                <button class="lang-choice-btn" onclick="setLanguage('kn')">
+                    ಕನ್ನಡ
+                    <span class="sub">Kannada</span>
+                </button>
+                <button class="lang-choice-btn" onclick="setLanguage('te')">
+                    తెలుగు
+                    <span class="sub">Telugu</span>
+                </button>
+                <button class="lang-choice-btn" onclick="setLanguage('ta')">
+                    தமிழ்
+                    <span class="sub">Tamil</span>
+                </button>
+                <button class="lang-choice-btn" onclick="setLanguage('hi')">
+                    हिन्दी
+                    <span class="sub">Hindi</span>
+                </button>
+                <button class="lang-choice-btn" onclick="setLanguage('ur')">
+                    اردو
+                    <span class="sub">Urdu</span>
+                </button>
+                <button class="lang-choice-btn" onclick="setLanguage('en')">
+                    English
+                    <span class="sub">Default</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Top contact strip -->
     <div class="top-strip">
@@ -846,15 +1003,25 @@
     <header class="site-header">
         <div class="wrap nav">
             <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#gallery">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                <li><a href="#process" data-i18n="nav_process">Process</a></li>
+                <li><a href="#gallery" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
             </ul>
-            <a href="tel:+917899387049" class="nav-cta">
-                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                Call Now
-            </a>
+            <div class="nav-actions">
+                <select class="lang-select-nav" id="langSelectDropdown" onchange="setLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="kn">ಕನ್ನಡ (KN)</option>
+                    <option value="te">తెలుగు (TE)</option>
+                    <option value="ta">தமிழ் (TA)</option>
+                    <option value="hi">हिन्दी (HI)</option>
+                    <option value="ur">اردو (UR)</option>
+                </select>
+                <a href="tel:+917899387049" class="nav-cta">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span data-i18n="nav_call_now">Call Now</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -862,12 +1029,12 @@
     <section class="hero" id="top">
         <div class="wrap hero-inner">
             <div>
-                <span class="hero-tag">Pine Wood Scaffolding/Saarwa — Bengaluru</span>
-                <h1>Reliable wooden scaffolding for projects that can't <em>afford downtime</em>.</h1>
-                <p class="lead">Safe Heights supplies and rents pine wood scaffolding (saarwa) for house construction, small buildings, and mid-rise projects — plus skilled labour support to keep your site work moving without delays.</p>
+                <span class="hero-tag" data-i18n="hero_tag">Pine Wood Scaffolding/Saarwa — Bengaluru</span>
+                <h1 data-i18n="hero_title">Reliable wooden scaffolding for projects that can't <em>afford downtime</em>.</h1>
+                <p class="lead" data-i18n="hero_desc">Safe Heights supplies and rents pine wood scaffolding (saarwa) for house construction, small buildings, and mid-rise projects — plus skilled labour support to keep your site work moving without delays.</p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-amber">Request a Quote</a>
-                    <a href="#gallery" class="btn btn-ghost">View Projects</a>
+                    <a href="#contact" class="btn btn-amber" data-i18n="hero_quote_btn">Request a Quote</a>
+                    <a href="#gallery" class="btn btn-ghost" data-i18n="hero_projects_btn">View Projects</a>
                 </div>
             </div>
         </div>
@@ -875,11 +1042,11 @@
             <div class="wrap stat-grid">
                 <div>
                     <span class="stat-num">100%</span>
-                    <span class="stat-label">Safety compliance</span>
+                    <span class="stat-label" data-i18n="stat_safety">Safety compliance</span>
                 </div>
                 <div>
                     <span class="stat-num">24/7</span>
-                    <span class="stat-label">Support & logistics</span>
+                    <span class="stat-label" data-i18n="stat_support">Support & logistics</span>
                 </div>
             </div>
         </div>
@@ -889,42 +1056,42 @@
     <section id="services" class="section">
         <div class="wrap">
             <div class="section-head">
-                <span class="eyebrow">What We Offer</span>
-                <h2>Wooden scaffolding, built for real job sites</h2>
-                <p>We deal in wooden scaffolding / saarwa (pine wood scaffolding) for both sale and rental, mainly supporting ongoing construction works. Our materials are suitable for house construction, small buildings, and mid-rise projects.</p>
+                <span class="eyebrow" data-i18n="services_eyebrow">What We Offer</span>
+                <h2 data-i18n="services_heading">Wooden scaffolding, built for real job sites</h2>
+                <p data-i18n="services_subheading">We deal in wooden scaffolding / saarwa (pine wood scaffolding) for both sale and rental, mainly supporting ongoing construction works. Our materials are suitable for house construction, small buildings, and mid-rise projects.</p>
             </div>
             <div class="services-grid">
                 <div class="service-panel">
                     <div class="panel-icon">
                         <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v18h18V4c0-1.1-.9-2-2-2zm-9 18H5v-2h5v2zm0-4H5v-2h5v2zm0-4H5V8h5v2zm0-4H5V4h5v2zm9 12h-5v-2h5v2zm0-4h-5v-2h5v2zm0-4h-5V8h5v2zm0-4h-5V4h5v2z"/></svg>
                     </div>
-                    <h3>Wooden Scaffolding / Saarwa — Sale</h3>
-                    <p>Pine wood scaffolding materials suitable for house construction, small buildings, and mid-rise projects, available for purchase.</p>
+                    <h3 data-i18n="svc_1_title">Wooden Scaffolding / Saarwa — Sale</h3>
+                    <p data-i18n="svc_1_desc">Pine wood scaffolding materials suitable for house construction, small buildings, and mid-rise projects, available for purchase.</p>
                     <div class="panel-foot">
                         <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                        Suited for house & mid-rise builds
+                        <span data-i18n="svc_1_foot">Suited for house & mid-rise builds</span>
                     </div>
                 </div>
                 <div class="service-panel">
                     <div class="panel-icon">
                         <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
                     </div>
-                    <h3>Wooden Scaffolding / Saarwa — Rental</h3>
-                    <p>Flexible rental of pine wood scaffolding to support ongoing construction works, helping keep your site moving without delays.</p>
+                    <h3 data-i18n="svc_2_title">Wooden Scaffolding / Saarwa — Rental</h3>
+                    <p data-i18n="svc_2_desc">Flexible rental of pine wood scaffolding to support ongoing construction works, helping keep your site moving without delays.</p>
                     <div class="panel-foot">
                         <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                        On-time materials for active sites
+                        <span data-i18n="svc_2_foot">On-time materials for active sites</span>
                     </div>
                 </div>
                 <div class="service-panel">
                     <div class="panel-icon">
                         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                     </div>
-                    <h3>Skilled Labour Arrangement</h3>
-                    <p>If required, we help arrange experienced labour for plastering, painting, plumbing, and exterior finishing — practical support for builders who need detailed work done properly.</p>
+                    <h3 data-i18n="svc_3_title">Skilled Labour Arrangement</h3>
+                    <p data-i18n="svc_3_desc">If required, we help arrange experienced labour for plastering, painting, plumbing, and exterior finishing — practical support for builders who need detailed work done properly.</p>
                     <div class="panel-foot">
                         <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                        Plastering, painting, plumbing & finishing
+                        <span data-i18n="svc_3_foot">Plastering, painting, plumbing & finishing</span>
                     </div>
                 </div>
             </div>
@@ -935,30 +1102,30 @@
     <section id="process" class="section process-section">
         <div class="wrap">
             <div class="section-head">
-                <span class="eyebrow">How It Works</span>
-                <h2>A straightforward process, start to finish</h2>
-                <p>From your first call to a fully erected structure, we keep every step transparent and on schedule.</p>
+                <span class="eyebrow" data-i18n="process_eyebrow">How It Works</span>
+                <h2 data-i18n="process_heading">A straightforward process, start to finish</h2>
+                <p data-i18n="process_subheading">From your first call to a fully erected structure, we keep every step transparent and on schedule.</p>
             </div>
             <div class="process-grid">
                 <div class="process-step">
                     <span class="process-num">01</span>
-                    <h4>Tell Us Your Requirement</h4>
-                    <p>Share your site details and whether you need scaffolding for sale or rental.</p>
+                    <h4 data-i18n="step_1_title">Tell Us Your Requirement</h4>
+                    <p data-i18n="step_1_desc">Share your site details and whether you need scaffolding for sale or rental.</p>
                 </div>
                 <div class="process-step">
                     <span class="process-num">02</span>
-                    <h4>Material Dispatch</h4>
-                    <p>Pine wood scaffolding (saarwa) is arranged and sent to your site without delay.</p>
+                    <h4 data-i18n="step_2_title">Material Dispatch</h4>
+                    <p data-i18n="step_2_desc">Pine wood scaffolding (saarwa) is arranged and sent to your site without delay.</p>
                 </div>
                 <div class="process-step">
                     <span class="process-num">03</span>
-                    <h4>Ongoing Site Support</h4>
-                    <p>We stay available throughout your project for additional material or rental needs.</p>
+                    <h4 data-i18n="step_3_title">Ongoing Site Support</h4>
+                    <p data-i18n="step_3_desc">We stay available throughout your project for additional material or rental needs.</p>
                 </div>
                 <div class="process-step">
                     <span class="process-num">04</span>
-                    <h4>Labour, If Needed</h4>
-                    <p>For plastering, painting, plumbing, or finishing work, we help arrange experienced labour.</p>
+                    <h4 data-i18n="step_4_title">Labour, If Needed</h4>
+                    <p data-i18n="step_4_desc">For plastering, painting, plumbing, or finishing work, we help arrange experienced labour.</p>
                 </div>
             </div>
         </div>
@@ -968,34 +1135,34 @@
     <section id="gallery" class="section gallery-section">
         <div class="wrap">
             <div class="section-head">
-                <span class="eyebrow">Our Work</span>
-                <h2>Recent projects</h2>
-                <p>A look at scaffolding installations completed across Bengaluru.</p>
+                <span class="eyebrow" data-i18n="gallery_eyebrow">Our Work</span>
+                <h2 data-i18n="gallery_heading">Recent projects</h2>
+                <p data-i18n="gallery_subheading">A look at scaffolding installations completed across Bengaluru.</p>
             </div>
             <div class="gallery-grid">
                 <a href="project1.jpg" data-lightbox="scaffolding-gallery" data-title="Project 1" class="gallery-frame">
                     <img src="project1.jpg" alt="Project 1">
-                    <span class="gallery-label">Project 01</span>
+                    <span class="gallery-label" data-i18n="proj_1">Project 01</span>
                 </a>
                 <a href="project2.jpg" data-lightbox="scaffolding-gallery" data-title="Project 2" class="gallery-frame">
                     <img src="project2.jpg" alt="Project 2">
-                    <span class="gallery-label">Project 02</span>
+                    <span class="gallery-label" data-i18n="proj_2">Project 02</span>
                 </a>
                 <a href="project3.jpg" data-lightbox="scaffolding-gallery" data-title="Project 3" class="gallery-frame">
                     <img src="project3.jpg" alt="Project 3">
-                    <span class="gallery-label">Project 03</span>
+                    <span class="gallery-label" data-i18n="proj_3">Project 03</span>
                 </a>
                 <a href="project4.jpg" data-lightbox="scaffolding-gallery" data-title="Project 4" class="gallery-frame">
                     <img src="project4.jpg" alt="Project 4">
-                    <span class="gallery-label">Project 04</span>
+                    <span class="gallery-label" data-i18n="proj_4">Project 04</span>
                 </a>
                 <a href="project5.jpg" data-lightbox="scaffolding-gallery" data-title="Project 5" class="gallery-frame">
                     <img src="project5.jpg" alt="Project 5">
-                    <span class="gallery-label">Project 05</span>
+                    <span class="gallery-label" data-i18n="proj_5">Project 05</span>
                 </a>
                 <a href="project6.jpg" data-lightbox="scaffolding-gallery" data-title="Project 6" class="gallery-frame">
                     <img src="project6.jpg" alt="Project 6">
-                    <span class="gallery-label">Project 06</span>
+                    <span class="gallery-label" data-i18n="proj_6">Project 06</span>
                 </a>
             </div>
         </div>
@@ -1005,21 +1172,21 @@
     <section id="contact" class="section contact-section">
         <div class="wrap">
             <div class="section-head">
-                <span class="eyebrow">Get In Touch</span>
-                <h2>Contact Us</h2>
-                <p>Reach out for quotes, scheduling, or any questions about our scaffolding services.</p>
+                <span class="eyebrow" data-i18n="contact_eyebrow">Get In Touch</span>
+                <h2 data-i18n="contact_heading">Contact Us</h2>
+                <p data-i18n="contact_subheading">Reach out for quotes, scheduling, or any questions about our scaffolding services.</p>
             </div>
             <div class="contact-shell">
                 <div class="contact-info">
                     <h3>Safe Heights Scaffolding</h3>
-                    <p>Wooden scaffolding (saarwa) for sale & rental, with skilled labour support for builders across Bengaluru.</p>
+                    <p data-i18n="contact_about">Wooden scaffolding (saarwa) for sale & rental, with skilled labour support for builders across Bengaluru.</p>
                     <ul class="contact-list">
                         <li>
                             <span class="contact-icon-wrap">
                                 <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                             </span>
                             <div>
-                                <strong>Address</strong>
+                                <strong data-i18n="field_address">Address</strong>
                                 <span class="value">Samruddhi Layout, Halasahalli Thippasandra, Bengaluru, Karnataka 560087</span>
                             </div>
                         </li>
@@ -1028,7 +1195,7 @@
                                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                             </span>
                             <div>
-                                <strong>Phone</strong>
+                                <strong data-i18n="field_phone">Phone</strong>
                                 <a href="tel:+917899387049">789-938-7049</a><br>
                                 <a href="tel:+918105483535">810-548-3535</a>
                             </div>
@@ -1038,7 +1205,7 @@
                                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                             </span>
                             <div>
-                                <strong>Email</strong>
+                                <strong data-i18n="field_email">Email</strong>
                                 <a href="mailto:SafeHeights.Scaffoldings@proton.me">SafeHeights.Scaffoldings@proton.me</a><br>
                                 <a href="mailto:SafeHeights.Scaffoldings@gmail.com">SafeHeights.Scaffoldings@gmail.com</a>
                             </div>
@@ -1055,11 +1222,386 @@
     <!-- Footer -->
     <footer>
         <div class="wrap">
-            <span>© 2026 Safe Heights Scaffolding. All rights reserved.</span>
+            <span>© 2026 Safe Heights Scaffolding. <span data-i18n="footer_rights">All rights reserved.</span></span>
             <span><a href="tel:+917899387049">789-938-7049</a> &nbsp;|&nbsp; <a href="tel:+918105483535">810-548-3535</a> &nbsp;|&nbsp; <a href="mailto:SafeHeights.Scaffoldings@gmail.com">SafeHeights.Scaffoldings@gmail.com</a></span>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+    <!-- Translation Engine & Dictionaries -->
+    <script>
+        const translations = {
+            en: {
+                nav_services: "Services",
+                nav_process: "Process",
+                nav_projects: "Projects",
+                nav_contact: "Contact",
+                nav_call_now: "Call Now",
+                hero_tag: "Pine Wood Scaffolding/Saarwa — Bengaluru",
+                hero_title: "Reliable wooden scaffolding for projects that can't <em>afford downtime</em>.",
+                hero_desc: "Safe Heights supplies and rents pine wood scaffolding (saarwa) for house construction, small buildings, and mid-rise projects — plus skilled labour support to keep your site work moving without delays.",
+                hero_quote_btn: "Request a Quote",
+                hero_projects_btn: "View Projects",
+                stat_safety: "Safety compliance",
+                stat_support: "Support & logistics",
+                services_eyebrow: "What We Offer",
+                services_heading: "Wooden scaffolding, built for real job sites",
+                services_subheading: "We deal in wooden scaffolding / saarwa (pine wood scaffolding) for both sale and rental, mainly supporting ongoing construction works. Our materials are suitable for house construction, small buildings, and mid-rise projects.",
+                svc_1_title: "Wooden Scaffolding / Saarwa — Sale",
+                svc_1_desc: "Pine wood scaffolding materials suitable for house construction, small buildings, and mid-rise projects, available for purchase.",
+                svc_1_foot: "Suited for house & mid-rise builds",
+                svc_2_title: "Wooden Scaffolding / Saarwa — Rental",
+                svc_2_desc: "Flexible rental of pine wood scaffolding to support ongoing construction works, helping keep your site moving without delays.",
+                svc_2_foot: "On-time materials for active sites",
+                svc_3_title: "Skilled Labour Arrangement",
+                svc_3_desc: "If required, we help arrange experienced labour for plastering, painting, plumbing, and exterior finishing — practical support for builders who need detailed work done properly.",
+                svc_3_foot: "Plastering, painting, plumbing & finishing",
+                process_eyebrow: "How It Works",
+                process_heading: "A straightforward process, start to finish",
+                process_subheading: "From your first call to a fully erected structure, we keep every step transparent and on schedule.",
+                step_1_title: "Tell Us Your Requirement",
+                step_1_desc: "Share your site details and whether you need scaffolding for sale or rental.",
+                step_2_title: "Material Dispatch",
+                step_2_desc: "Pine wood scaffolding (saarwa) is arranged and sent to your site without delay.",
+                step_3_title: "Ongoing Site Support",
+                step_3_desc: "We stay available throughout your project for additional material or rental needs.",
+                step_4_title: "Labour, If Needed",
+                step_4_desc: "For plastering, painting, plumbing, or finishing work, we help arrange experienced labour.",
+                gallery_eyebrow: "Our Work",
+                gallery_heading: "Recent projects",
+                gallery_subheading: "A look at scaffolding installations completed across Bengaluru.",
+                proj_1: "Project 01",
+                proj_2: "Project 02",
+                proj_3: "Project 03",
+                proj_4: "Project 04",
+                proj_5: "Project 05",
+                proj_6: "Project 06",
+                contact_eyebrow: "Get In Touch",
+                contact_heading: "Contact Us",
+                contact_subheading: "Reach out for quotes, scheduling, or any questions about our scaffolding services.",
+                contact_about: "Wooden scaffolding (saarwa) for sale & rental, with skilled labour support for builders across Bengaluru.",
+                field_address: "Address",
+                field_phone: "Phone",
+                field_email: "Email",
+                footer_rights: "All rights reserved."
+            },
+            kn: {
+                nav_services: "ಸೇವೆಗಳು",
+                nav_process: "ಕಾರ್ಯವಿಧಾನ",
+                nav_projects: "ಪ್ರಾಜೆಕ್ಟ್‌ಗಳು",
+                nav_contact: "ಸಂಪರ್ಕಿಸಿ",
+                nav_call_now: "ಕರೆ ಮಾಡಿ",
+                hero_tag: "ಪೈನ್ ವುಡ್ ಸ್ಕ್ಯಾಫೋಲ್ಡಿಂಗ್ / ಸಾರ್ವಾ — ಬೆಂಗಳೂರು",
+                hero_title: "ನಿರ್ಮಾಣ ಕಾಮಗಾರಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ <em>ಮರದ ಸಾರ್ವಾ / ಸ್ಕ್ಯಾಫೋಲ್ಡಿಂಗ್</em> ಸೇವೆ.",
+                hero_desc: "ಮನೆ ನಿರ್ಮಾಣ ಮತ್ತು ಕಟ್ಟಡ ಕಾಮಗಾರಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಪೈನ್ ವುಡ್ ಸಾರ್ವಾ ಮಾರಾಟ ಮತ್ತು ಬಾಡಿಗೆಗೆ ದೊರೆಯುತ್ತದೆ. ಜೊತೆಗೆ ನುರಿತ ಕಾರ್ಮಿಕರ ಬೆಂಬಲವೂ ಲಭ್ಯವಿದೆ.",
+                hero_quote_btn: "ಬೆಲೆ ತಿಳಿಯಿರಿ",
+                hero_projects_btn: "ಕೆಲಸಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+                stat_safety: "ಸುರಕ್ಷತಾ ಮಾನದಂಡ",
+                stat_support: "ಸದಾ ಬೆಂಬಲ ಮತ್ತು ಸಾಗಣೆ",
+                services_eyebrow: "ನಾವು ನೀಡುವ ಸೇವೆಗಳು",
+                services_heading: "ಉತ್ತಮ ಗುಣಮಟ್ಟದ ಮರದ ಸಾರ್ವಾ",
+                services_subheading: "ಮನೆ ಮತ್ತು ಸಣ್ಣ ಕಟ್ಟಡ ನಿರ್ಮಾಣ ಕಾಮಗಾರಿಗಳಿಗೆ ಪೈನ್ ವುಡ್ ಸ್ಕ್ಯಾಫೋಲ್ಡಿಂಗ್ (ಸಾರ್ವಾ) ಮಾರಾಟ ಮತ್ತು ಬಾಡಿಗೆಗೆ ಒದಗಿಸುತ್ತೇವೆ.",
+                svc_1_title: "ಮರದ ಸಾರ್ವಾ / ಸ್ಕ್ಯಾಫೋಲ್ಡಿಂಗ್ — ಮಾರಾಟ",
+                svc_1_desc: "ಮನೆ ನಿರ್ಮಾಣ ಮತ್ತು ಕಟ್ಟಡ ಕಾಮಗಾರಿಗಳಿಗೆ ಸೂಕ್ತವಾದ ಗುಣಮಟ್ಟದ ಪೈನ್ ವುಡ್ ಸಾರ್ವಾ ಮಾರಾಟಕ್ಕೆ ಲಭ್ಯವಿದೆ.",
+                svc_1_foot: "ಮನೆ ಮತ್ತು ಕಟ್ಟಡ ಕಾಮಗಾರಿಗಳಿಗೆ ಸೂಕ್ತ",
+                svc_2_title: "ಮರದ ಸಾರ್ವಾ / ಸ್ಕ್ಯಾಫೋಲ್ಡಿಂಗ್ — ಬಾಡಿಗೆಗೆ",
+                svc_2_desc: "ಕಾಮಗಾರಿ ತಡವಾಗದಂತೆ ಮುಂದುವರಿಯಲು ಅನುಕೂಲಕರವಾದ ದರದಲ್ಲಿ ಸಾರ್ವಾ ಸಾಮಗ್ರಿಗಳು ಬಾಡಿಗೆಗೆ ಲಭ್ಯ.",
+                svc_2_foot: "ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಡೆಲಿವರಿ",
+                svc_3_title: "ನುರಿತ ಕಾರ್ಮಿಕರ ವ್ಯವಸ್ಥೆ",
+                svc_3_desc: "ಪ್ಲಾಸ್ಟರಿಂಗ್, ಪೇಂಟಿಂಗ್, ಪ್ಲಂಬಿಂಗ್ ಮತ್ತು ಫಿನಿಶಿಂಗ್ ಕೆಲಸಗಳಿಗೆ ಅನುಭವಿ ಕಾರ್ಮಿಕರನ್ನು ಒದಗಿಸುತ್ತೇವೆ.",
+                svc_3_foot: "ಪ್ಲಾಸ್ಟರಿಂಗ್, ಪೇಂಟಿಂಗ್ & ಫಿನಿಶಿಂಗ್",
+                process_eyebrow: "ಕಾರ್ಯವಿಧಾನ",
+                process_heading: "ಸುಲಭ ಮತ್ತು ನೇರವಾದ ಪ್ರಕ್ರಿಯೆ",
+                process_subheading: "ನಿಮ್ಮ ಮೊದಲ ಕರೆಯಿಂದ ಹಿಡಿದು ಕೆಲಸ ಪೂರ್ಣಗೊಳ್ಳುವವರೆಗೆ ಪಾರದರ್ಶಕ ಸೇವೆ.",
+                step_1_title: "ಅಗತ್ಯತೆಯನ್ನು ತಿಳಿಸಿ",
+                step_1_desc: "ನಿಮ್ಮ ಸೈಟ್ ವಿವರಗಳು ಮತ್ತು ಬಾಡಿಗೆ ಅಥವಾ ಮಾರಾಟದ ಅಗತ್ಯವನ್ನು ತಿಳಿಸಿ.",
+                step_2_title: "ಸಾಮಗ್ರಿ ರವಾನೆ",
+                step_2_desc: "ಪೈನ್ ವುಡ್ ಸಾರ್ವಾ ಸಾಮಗ್ರಿಗಳನ್ನು ತಕ್ಷಣ ನಿಮ್ಮ ಸೈಟ್‌ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ.",
+                step_3_title: "ನಿರಂತರ ಸೈಟ್ ಬೆಂಬಲ",
+                step_3_desc: "ಹೆಚ್ಚುವರಿ ಸಾಮಗ್ರಿಗಳ ಅಗತ್ಯವಿದ್ದಲ್ಲಿ ನಾವು ಸದಾ ಬೆಂಬಲ ನೀಡುತ್ತೇವೆ.",
+                step_4_title: "ಕಾರ್ಮಿಕರ ಬೆಂಬಲ",
+                step_4_desc: "ಪ್ಲಾಸ್ಟರಿಂಗ್ ಮತ್ತು ಪೇಂಟಿಂಗ್ ಕೆಲಸಗಳಿಗೆ ಅನುಭವಿ ಕಾರ್ಮಿಕರನ್ನು ಒದಗಿಸುತ್ತೇವೆ.",
+                gallery_eyebrow: "ನಮ್ಮ ಕೆಲಸಗಳು",
+                gallery_heading: "ಇತ್ತೀಚಿನ ಪ್ರಾಜೆಕ್ಟ್‌ಗಳು",
+                gallery_subheading: "ಬೆಂಗಳೂರಿನಾದ್ಯಂತ ನಾವು ಪೂರ್ಣಗೊಳಿಸಿದ ಸಾರ್ವಾ ಕೆಲಸಗಳ ಚಿತ್ರಗಳು.",
+                proj_1: "ಪ್ರಾಜೆಕ್ಟ್ 01",
+                proj_2: "ಪ್ರಾಜೆಕ್ಟ್ 02",
+                proj_3: "ಪ್ರಾಜೆಕ್ಟ್ 03",
+                proj_4: "ಪ್ರಾಜೆಕ್ಟ್ 04",
+                proj_5: "ಪ್ರಾಜೆಕ್ಟ್ 05",
+                proj_6: "ಪ್ರಾಜೆಕ್ಟ್ 06",
+                contact_eyebrow: "ಸಂಪರ್ಕದಲ್ಲಿರಿ",
+                contact_heading: "ಸಂಪರ್ಕಿಸಿ",
+                contact_subheading: "ಬೆಲೆ ವಿವರಗಳು ಅಥವಾ ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಇಂದೇ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+                contact_about: "ಬೆಂಗಳೂರಿನಾದ್ಯಂತ ಮನೆ ಮತ್ತು ಕಟ್ಟಡ ನಿರ್ಮಾಣಕ್ಕೆ ಮರದ ಸಾರ್ವಾ ಮಾರಾಟ ಮತ್ತು ಬಾಡಿಗೆ ಸೇವೆ.",
+                field_address: "ವಿಳಾಸ",
+                field_phone: "ಫೋನ್ ಸಂಖ್ಯೆ",
+                field_email: "ಇಮೇಲ್",
+                footer_rights: "ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+            },
+            te: {
+                nav_services: "సేవలు",
+                nav_process: "పని విధానం",
+                nav_projects: "ప్రాజెక్ట్‌లు",
+                nav_contact: "సంప్రదించండి",
+                nav_call_now: "కాల్ చేయండి",
+                hero_tag: "పైన్ వుడ్ స్కాఫోల్డింగ్ / సార్వా — బెంగళూరు",
+                hero_title: "భవన నిర్మాణ పనులకు నాణ్యమైన <em>చెక్క స్కాఫోల్డింగ్ / సార్వా</em> సేవలు.",
+                hero_desc: "ఇళ్ల నిర్మాణం, అపార్ట్‌మెంట్ల కోసం నాణ్యమైన పైన్ వుడ్ సార్వా అమ్మకం మరియు అద్దెకు ఇవ్వబడును. నైపుణ్యం కలిగిన కార్మికుల మద్దతు కూడా కలదు.",
+                hero_quote_btn: "ధర తెలుసుకోండి",
+                hero_projects_btn: "పనులను చూడండి",
+                stat_safety: "భద్రతా ప్రమాణాలు",
+                stat_support: "నిరంతర మద్దతు",
+                services_eyebrow: "మా సేవలు",
+                services_heading: "నిర్మాణ పనులకు నాణ్యమైన చెక్క సార్వా",
+                services_subheading: "భవన నిర్మాణాల కోసం పైన్ వుడ్ స్కాఫోల్డింగ్ (సార్వా) అమ్మకాలు మరియు అద్దెకు లభిస్తాయి.",
+                svc_1_title: "చెక్క సార్వా / స్కాఫోల్డింగ్ — అమ్మకం",
+                svc_1_desc: "ఇంటి నిర్మాణం, ఇతర ప్రాజెక్ట్‌లకు అనువైన పైన్ వుడ్ స్కాఫోల్డింగ్ మెటీరియల్స్ అమ్మబడును.",
+                svc_1_foot: "భవన నిర్మాణాలకు అనుకూలం",
+                svc_2_title: "చెక్క సార్వా / స్కాఫోల్డింగ్ — అద్దెకు",
+                svc_2_desc: "పనులు ఆగకుండా కొనసాగేందుకు నాణ్యమైన సార్వా మెటీరియల్స్ తక్కువ ధరలో అద్దెకు లభించును.",
+                svc_2_foot: "సమయానికి మెటీరియల్ డెలివరీ",
+                svc_3_title: "నైపుణ్యం కలిగిన లేబర్ సదుపాయం",
+                svc_3_desc: "ప్లాస్టరింగ్, పెయింటింగ్, ప్లంబింగ్ పనుల కోసం అనుభవజ్ఞులైన కార్మికులను ఏర్పాటు చేస్తాము.",
+                svc_3_foot: "ప్లాస్టరింగ్ & పెయింటింగ్ పనులు",
+                process_eyebrow: "పని విధానం",
+                process_heading: "సులభమైన మరియు స్పష్టమైన విధానం",
+                process_subheading: "మీ మొదటి కాల్ నుండి పని పూర్తయ్యే వరకు పారదర్శకమైన సేవ.",
+                step_1_title: "మీ అవసరాన్ని చెప్పండి",
+                step_1_desc: "మీ సైట్ వివరాలు మరియు అద్దె లేదా కొనుగోలు అవసరాన్ని తెలియజేయండి.",
+                step_2_title: "మెటీరియల్ సరఫరా",
+                step_2_desc: "పైన్ వుడ్ సార్వా మెటీరియల్స్ ఆలస్యం లేకుండా మీ సైట్‌కి పంపబడతాయి.",
+                step_3_title: "సైట్ మద్దతు",
+                step_3_desc: "అదనపు మెటీరియల్స్ అవసరమైతే మేము ఎల్లప్పుడూ అందుబాటులో ఉంటాము.",
+                step_4_title: "లేబర్ మద్దతు",
+                step_4_desc: "ప్లాస్టరింగ్, పెయింటింగ్ పనుల కోసం అనుభవజ్ఞులైన కార్మికులను ఏర్పాటు చేస్తాము.",
+                gallery_eyebrow: "మా పనులు",
+                gallery_heading: "ఇటీవలి ప్రాజెక్ట్‌లు",
+                gallery_subheading: "బెంగళూరులో మేము పూర్తి చేసిన కొన్ని ప్రాజెక్ట్‌ల చిత్రాలు.",
+                proj_1: "ప్రాజెక్ట్ 01",
+                proj_2: "ప్రాజెక్ట్ 02",
+                proj_3: "ప్రాజెక్ట్ 03",
+                proj_4: "ప్రాజెక్ట్ 04",
+                proj_5: "ప్రాజెక్ట్ 05",
+                proj_6: "ప్రాజెక్ట్ 06",
+                contact_eyebrow: "సంప్రదించండి",
+                contact_heading: "మమ్మల్ని సంప్రదించండి",
+                contact_subheading: "ధరలు మరియు ఇతర వివరాల కోసం నేడే సంప్రదించండి.",
+                contact_about: "బెంగళూరు అంతటా భవన నిర్మాణ పనులకు చెక్క సార్వా అమ్మకం మరియు అద్దె సేవలు.",
+                field_address: "చిరునామా",
+                field_phone: "ఫోన్ నంబర్",
+                field_email: "ఈమెయిల్",
+                footer_rights: "సర్వ హక్కులూ ప్రత్యేకించబడినవి."
+            },
+            ta: {
+                nav_services: "சேவைகள்",
+                nav_process: "செயல்முறை",
+                nav_projects: "திட்டங்கள்",
+                nav_contact: "தொடர்புக்கு",
+                nav_call_now: "அழைக்க",
+                hero_tag: "பைன் மர சாரக்கட்டு (Saarwa) — பெங்களூரு",
+                hero_title: "கட்டிட வேலைகளுக்கு நம்பகமான <em>மர சாரக்கட்டு / சார்வா</em> சேவைகள்.",
+                hero_desc: "வீடு மற்றும் வணிக கட்டிட கட்டுமான பணிகளுக்கு உயர்தர பைன் மர சாரக்கட்டு விற்பனை மற்றும் வாடகைக்கு கிடைக்கும். அனுபவமிக்க தொழிலாளர்களும் ஏற்பாடு செய்யப்படும்.",
+                hero_quote_btn: "விலை அறிய",
+                hero_projects_btn: "வேலைகளை பார்க்க",
+                stat_safety: "பாதுகாப்பு தரம்",
+                stat_support: "24/7 உதவி & சேவை",
+                services_eyebrow: "எங்கள் சேவைகள்",
+                services_heading: "உயர்தர மர சாரக்கட்டு சேவைகள்",
+                services_subheading: "கட்டுமான பணிகளுக்காக தரமான பைன் மர சாரக்கட்டு (சார்வா) விற்பனை மற்றும் வாடகைக்கு வழங்கி வருகிறோம்.",
+                svc_1_title: "மர சாரக்கட்டு — விற்பனை",
+                svc_1_desc: "வீடு மற்றும் அடுக்குமாடி கட்டிட கட்டுமான பணிகளுக்கான தரமான மர சாரக்கட்டு விற்பனைக்கு உள்ளது.",
+                svc_1_foot: "கட்டுமான வேலைகளுக்கு ஏற்றது",
+                svc_2_title: "மர சாரக்கட்டு — வாடகைக்கு",
+                svc_2_desc: "வேலைகள் தடையின்றி நடக்க குறைந்த வாடகையில் மர சாரக்கட்டு பொருட்கள் கிடைக்கும்.",
+                svc_2_foot: "சரியான நேரத்திற்கு டெலிவரி",
+                svc_3_title: "திறமையான தொழிலாளர்கள் ஏற்பாடு",
+                svc_3_desc: "பூச்சு வேலை, பெயிண்டிங், பிளம்பிங் போன்ற வேலைகளுக்கு அனுபவமிக்க ஆட்கள் ஏற்பாடு செய்யப்படும்.",
+                svc_3_foot: "பூச்சு வேலை & பெயிண்டிங்",
+                process_eyebrow: "செயல்முறை",
+                process_heading: "எளிமையான பணி நடைமுறை",
+                process_subheading: "முதல் அழைப்பிலிருந்து வேலை முடியும் வரை வெளிப்படையான சிறந்த சேவை.",
+                step_1_title: "தேவையை தெரிவிக்கவும்",
+                step_1_desc: "உங்கள் கட்டிட விவரங்கள் மற்றும் வாடகை அல்லது விற்பனை தேவையை கூறவும்.",
+                step_2_title: "பொருட்கள் அனுப்புதல்",
+                step_2_desc: "மர சாரக்கட்டு பொருட்கள் தாமதமின்றி உங்கள் இடத்திற்கு அனுப்பி வைக்கப்படும்.",
+                step_3_title: "தொடர் ஆதரவு",
+                step_3_desc: "கூடுதல் பொருட்கள் தேவைப்பட்டால் உடனடியாக உதவி வழங்கப்படும்.",
+                step_4_title: "ஆட்கள் தேவைப்பட்டால்",
+                step_4_desc: "பூச்சு மற்றும் பெயிண்டிங் வேலைகளுக்கு சிறந்த தொழிலாளர்கள் ஏற்பாடு செய்யப்படுவர்.",
+                gallery_eyebrow: "எங்கள் வேலைகள்",
+                gallery_heading: "சமீபத்திய திட்டங்கள்",
+                gallery_subheading: "பெங்களூரு முழுவதும் நாங்கள் அமைத்த சாரக்கட்டு வேலைகளின் புகைப்படங்கள்.",
+                proj_1: "திட்டம் 01",
+                proj_2: "திட்டம் 02",
+                proj_3: "திட்டம் 03",
+                proj_4: "திட்டம் 04",
+                proj_5: "திட்டம் 05",
+                proj_6: "திட்டம் 06",
+                contact_eyebrow: "தொடர்பு கொள்ள",
+                contact_heading: "எங்களை தொடர்பு கொள்ள",
+                contact_subheading: "வாடகை மற்றும் விலை விவரங்களை அறிய இன்றே தொடர்பு கொள்ளவும்.",
+                contact_about: "பெங்களூருவில் வீடு மற்றும் கட்டிட கட்டுமானங்களுக்கு மர சாரக்கட்டு விற்பனை & வாடகை.",
+                field_address: "முகவரி",
+                field_phone: "தொலைபேசி",
+                field_email: "மின்னஞ்சல்",
+                footer_rights: "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
+            },
+            hi: {
+                nav_services: "सेवाएं",
+                nav_process: "प्रक्रिया",
+                nav_projects: "प्रोजेक्ट्स",
+                nav_contact: "संपर्क",
+                nav_call_now: "कॉल करें",
+                hero_tag: "पाइन वुड स्केफोल्डिंग / सारवा — बेंगलुरु",
+                hero_title: "कंस्ट्रक्शन साइट्स के लिए भरोसेमंद <em>लकड़ी की स्केफोल्डिंग (सारवा)</em>.",
+                hero_desc: "घर और बिल्डिंग निर्माण के लिए पाइन वुड स्केफोल्डिंग (सारवा) की बिक्री और किराये की सुविधा, कुशल लेबर सपोर्ट के साथ।",
+                hero_quote_btn: "कीमत जानें",
+                hero_projects_btn: "प्रोजेक्ट्स देखें",
+                stat_safety: "सुरक्षा अनुपालन",
+                stat_support: "24/7 सपोर्ट व लॉजिस्टिक्स",
+                services_eyebrow: "हमारी सेवाएं",
+                services_heading: "मजबूत लकड़ी की स्केफोल्डिंग",
+                services_subheading: "हम घर और बिल्डिंग निर्माण कार्यों के लिए पाइन वुड स्केफोल्डिंग (सारवा) बिक्री और किराये पर उपलब्ध कराते हैं।",
+                svc_1_title: "लकड़ी स्केफोल्डिंग — बिक्री",
+                svc_1_desc: "घर और अन्य बिल्डिंग निर्माण के लिए मजबूत पाइन वुड स्केफोल्डिंग सामग्री खरीदने के लिए उपलब्ध।",
+                svc_1_foot: "मकान और बिल्डिंग निर्माण के लिए उपयुक्त",
+                svc_2_title: "लकड़ी स्केफोल्डिंग — किराये पर",
+                svc_2_desc: "काम बिना रुके जारी रखने के लिए किफायती दरों पर सारवा सामग्री किराये पर उपलब्ध।",
+                svc_2_foot: "समय पर डिलीवरी",
+                svc_3_title: "कुशल लेबर की व्यवस्था",
+                svc_3_desc: "प्लास्टरिंग, पेंटिंग, प्लंबिंग और फिनिशिंग कार्यों के लिए अनुभवी लेबर की व्यवस्था उपलब्ध।",
+                svc_3_foot: "प्लास्टरिंग, पेंटिंग और फिनिशिंग",
+                process_eyebrow: "प्रक्रिया",
+                process_heading: "सरल और स्पष्ट कार्यप्रणाली",
+                process_subheading: "पहली कॉल से लेकर काम पूरा होने तक पूरी पारदर्शिता और समय की पाबंदी।",
+                step_1_title: "अपनी जरूरत बताएं",
+                step_1_desc: "अपनी साइट का विवरण और किराये या खरीद की आवश्यकता साझा करें।",
+                step_2_title: "सामग्री की डिलीवरी",
+                step_2_desc: "पाइन वुड सारवा सामग्री तुरंत आपकी साइट पर पहुंचा दी जाती है।",
+                step_3_title: "साइट सपोर्ट",
+                step_3_desc: "अतिरिक्त सामग्री या किराये की जरूरत के लिए हम हमेशा उपलब्ध हैं।",
+                step_4_title: "लेबर की आवश्यकता",
+                step_4_desc: "प्लास्टर और पेंटिंग के काम के लिए अनुभवी कारीगरों की व्यवस्था।",
+                gallery_eyebrow: "हमारे कार्य",
+                gallery_heading: "हाल के प्रोजेक्ट्स",
+                gallery_subheading: "बेंगलुरु में पूरे किए गए स्केफोल्डिंग कार्यों की एक झलक।",
+                proj_1: "प्रोजेक्ट 01",
+                proj_2: "प्रोजेक्ट 02",
+                proj_3: "प्रोजेक्ट 03",
+                proj_4: "प्रोजेक्ट 04",
+                proj_5: "प्रोजेक्ट 05",
+                proj_6: "प्रोजेक्ट 06",
+                contact_eyebrow: "संपर्क करें",
+                contact_heading: "संपर्क सूत्र",
+                contact_subheading: "कीमतों और अन्य जानकारी के लिए आज ही हमसे संपर्क करें।",
+                contact_about: "बेंगलुरु में कंस्ट्रक्शन कार्यों के लिए लकड़ी की स्केफोल्डिंग की बिक्री व किराये की सेवा।",
+                field_address: "पता",
+                field_phone: "फोन",
+                field_email: "ईमेल",
+                footer_rights: "सर्वाधिकार सुरक्षित।"
+            },
+            ur: {
+                nav_services: "خدمات",
+                nav_process: "طریقہ کار",
+                nav_projects: "منصوبے",
+                nav_contact: "رابطہ",
+                nav_call_now: "کال کریں",
+                hero_tag: "پائن ووڈ اسکیفولڈنگ / ساروا — بنگلور",
+                hero_title: "تعمیراتی کاموں کے لیے قابل اعتماد <em>لکڑی کی اسکیفولڈنگ (ساروا)</em>.",
+                hero_desc: "مکانات اور عمارتوں کی تعمیر کے لیے اعلیٰ معیار کی پائن ووڈ ساروا کی فروخت اور کرایہ، ہنرمند مزدوروں کی مدد کے ساتھ۔",
+                hero_quote_btn: "قیمت معلوم کریں",
+                hero_projects_btn: "منصوبے دیکھیں",
+                stat_safety: "حفاظتی معیار",
+                stat_support: "24/7 سپورٹ",
+                services_eyebrow: "ہماری خدمات",
+                services_heading: "مضبوط لکڑی کی اسکیفولڈنگ",
+                services_subheading: "ہم مکان اور عمارت کی تعمیر کے لیے پائن ووڈ اسکیفولڈنگ (ساروا) فروخت اور کرایہ پر فراہم کرتے ہیں۔",
+                svc_1_title: "لکڑی اسکیفولڈنگ — برائے فروخت",
+                svc_1_desc: "مکان اور عمارت کی تعمیر کے لیے بہترین پائن ووڈ اسکیفولڈنگ میٹریل خریدنے کے لیے دستیاب۔",
+                svc_1_foot: "تعمیراتی کاموں کے لیے موزوں",
+                svc_2_title: "لکڑی اسکیفولڈنگ — برائے کرایہ",
+                svc_2_desc: "کام بغیر کسی رکاوٹ کے جاری رکھنے کے لیے سستے کرائے پر ساروا میٹریل دستیاب ہے۔",
+                svc_2_foot: "وقت پر ڈیلیوری",
+                svc_3_title: "ہنرمند مزدوروں کا انتظام",
+                svc_3_desc: "پلستر، پینٹنگ، پلمبنگ اور فنشنگ کے کاموں کے لیے تجربہ کار کاریگروں کا انتظام۔",
+                svc_3_foot: "پلستر، پینٹنگ اور فنشنگ",
+                process_eyebrow: "طریقہ کار",
+                process_heading: "آسان اور شفاف عمل",
+                process_subheading: "پہلی کال سے لے کر کام مکمل ہونے تک شفاف اور تیز رفتار خدمت۔",
+                step_1_title: "اپنی ضرورت بتائیں",
+                step_1_desc: "اپنی سائٹ کی تفصیلات اور کرایہ یا خریداری کی ضرورت بتائیں۔",
+                step_2_title: "میٹریل کی ترسیل",
+                step_2_desc: "پائن ووڈ ساروا میٹریل فوری طور پر آپ کی سائٹ پر بھیج دیا جاتا ہے۔",
+                step_3_title: "مسلسل تعاون",
+                step_3_desc: "مزید میٹریل کی ضرورت کے لیے ہم ہمیشہ دستیاب ہیں۔",
+                step_4_title: "مزدوروں کی سہولت",
+                step_4_desc: "پلستر اور پینٹنگ کے کاموں کے لیے تجربہ کار کاریگر فراہم کیے جاتے ہیں۔",
+                gallery_eyebrow: "ہمارا کام",
+                gallery_heading: "حالیہ منصوبے",
+                gallery_subheading: "بنگلور میں مکمل کیے گئے اسکیفولڈنگ کے کاموں کی تصاویر۔",
+                proj_1: "پروجیکٹ 01",
+                proj_2: "پروجیکٹ 02",
+                proj_3: "پروجیکٹ 03",
+                proj_4: "پروجیکٹ 04",
+                proj_5: "پروجیکٹ 05",
+                proj_6: "پروجیکٹ 06",
+                contact_eyebrow: "رابطہ کریں",
+                contact_heading: "ہم سے رابطہ کریں",
+                contact_subheading: "قیمتوں اور دیگر معلومات کے لیے آج ہی رابطہ کریں۔",
+                contact_about: "بنگلور میں تعمیراتی کاموں کے لیے لکڑی کی اسکیفولڈنگ کی فروخت اور کرایہ کی خدمت۔",
+                field_address: "پتہ",
+                field_phone: "فون نمبر",
+                field_email: "ای میل",
+                footer_rights: "تمام حقوق محفوظ ہیں۔"
+            }
+        };
+
+        function setLanguage(lang) {
+            if (!translations[lang]) lang = 'en';
+            
+            // Save selection to storage
+            localStorage.setItem('site_preferred_lang', lang);
+
+            // Update html lang & rtl attributes
+            document.documentElement.lang = lang;
+            if (lang === 'ur') {
+                document.documentElement.dir = 'rtl';
+                document.body.classList.add('lang-ur');
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.body.classList.remove('lang-ur');
+            }
+
+            // Update Dropdown selector
+            const dropdown = document.getElementById('langSelectDropdown');
+            if (dropdown) dropdown.value = lang;
+
+            // Apply text translations to data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Close popup modal
+            const modal = document.getElementById('langModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        // On Page Load: Check if language was chosen before, otherwise prompt popup
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('site_preferred_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            } else {
+                // First time visitor -> show popup
+                const modal = document.getElementById('langModal');
+                if (modal) modal.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
